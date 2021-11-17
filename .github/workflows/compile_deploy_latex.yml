@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # Edit here with the names of your latex file and directory (can use ".")
-      DIR: ../../
+      DIR: .
       FILE: main
     steps:
       - name: Checkout
