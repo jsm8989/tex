@@ -1,0 +1,329 @@
+%
+\usepackage[ngerman,english]{babel}
+\usepackage[utf8]{inputenc} 
+\usepackage[T1]{fontenc} %% pdflatex font
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{times} %Times New Roman
+\usepackage{mathptmx}
+\usepackage{newtxtext}  %\usepackage{newtxmath,newtxtext}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{pdflscape}
+\usepackage{euscript, indentfirst, float}
+\usepackage{ifpdf}
+\usepackage{pstricks, pst-node, pst-tree, pslatex, psfrag}
+%\let\openbox\undefined %newtxmath define ettiği için, amsmath de ettigi icin
+%\let\Bbbk\undefined
+\usepackage{amsthm, amsmath, amssymb, amscd}
+\usepackage{graphics, graphicx, pb-diagram}
+\usepackage{rotating}
+\usepackage[all]{xy}
+
+%\usepackage[round,comma]{natbib} %references icin yazar ve yil adiyla yazma, cite etme icin kullanilan paket.%
+\usepackage{color}
+\usepackage[none]{hyphenat}
+
+
+
+\usepackage{url}
+\urlstyle{rm}
+\usepackage{bookmark}
+%-------------------------  INDEX  ---------------------------------
+%\usepackage{makeidx} %-- index icin kullanilacak gerekirse
+%\makeindex  %-- index icin kullanilacak gerekirse
+%%\usepackage{showidx} %--- indexe giren kelimeleri marginda gosteren paket
+%-------------------------- kontrol ederken kullanilabilir
+%-------------------------------------------------------------------
+
+
+
+
+%%----------------- Theorem,proof,lemma,corollary,proposition,definition,
+%%----------------- remark,equation all numbered within section.  --------------------
+%%----------------- requires \usepackage{amsthm}   % AMS theorem style package. -----
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+%\theoremstyle{algorithm}
+\newtheorem{algorithm}[theorem]{Algorithm}
+
+\newcommand{\properpagestyle}{
+       \pagestyle{myheadings}\markboth{}{}\markright{}}
+
+\renewcommand{\baselinestretch}{1.5}      %iki satir arasi 1.5 aciklikta yazmak icin.
+
+% New if constructs:    Default conditions:
+\newif\ifpermission     \permissiontrue
+\newif\iffigurespage    \figurespagetrue
+\newif\iftablespage     \tablespagetrue
+\newif\iffront@pages    \front@pagestrue
+\newif\ifthird@reader   \third@readerfalse
+\newif\iffourth@reader  \fourth@readerfalse
+\newif\iffifth@reader   \fifth@readerfalse
+\newif\ifph@d           \ph@dfalse
+\newif\ifco@supervisor \co@supervisorfalse
+\newif\ifdraft@mode     \draft@modefalse
+\newif\ifprint@bib      \print@bibtrue
+\newif\ifdedic@tion     \dedic@tionfalse
+
+\def\dept#1{\gdef\@dept{#1}}
+\def\prog#1{\gdef\@prog{#1}}
+\def\faculty#1{\gdef\@faculty{#1}}
+\def\author#1{\gdef\@author{#1}}
+\def\AUTHOR#1{\gdef\@AUTHOR{#1}}
+\def\supervisor#1{\gdef\@supervisor{#1}}
+\def\SUPERVISOR#1{\gdef\@SUPERVISOR{#1}}
+\def\cosupervisor#1{\gdef\@cosupervisor{#1}}
+\def\COSUPERVISOR#1{\gdef\@COSUPERVISOR{#1}}
+\def\firstreader#1{\gdef\@firstreader{#1}}
+\def\secondreader#1{\gdef\@secondreader{#1}}
+\def\thirdreader#1{\gdef\@thirdreader{#1}}
+\def\fourthreader#1{\gdef\@fourthreader{#1}}
+\def\fifthreader#1{\gdef\@fifthreader{#1}}
+\def\submitdate#1{\gdef\@submitdate{#1}}
+\def\exactdate#1{\gdef\@exactdate{#1}}
+\def\director#1{\gdef\@director{#1}}
+\def\degree#1{\gdef\@degree{#1}}
+%\AtBeginDocument{\renewcommand{\bibname}{REFERENCES}}
+\addto\captionsenglish{
+    \def\abstractname{ABSTRACT}
+    \def\refname{\huge{REFERENCES}}
+    \def\bibname{\huge{REFERENCES}} %%%%%  \def\bibname{BIBLIOGRAPHY} %%%%%
+    \def\chaptername{CHAPTER}
+    \def\appendixname{APPENDIX}
+    \def\contentsname{\large{CONTENTS}}
+    \def\listabbrename{\large{NOMENCLATURE}}
+    \def\listfigurename{\large{LIST OF FIGURES}}
+    \def\listtablename{\large{LIST OF TABLES}}
+    \def\indexname{INDEX}
+    \def\figurename{Figure}
+    \def\tablename{Table}
+    \def\partname{Part}
+    \def\pagename{Page}
+    \def\proofname{Proof}
+}
+
+\def\msc{
+    \degree{Master of Science}
+    }
+\msc % default degree
+\def\phd{
+    \degree{Doctor of Philosophy}
+    \ph@dtrue
+    }
+\def\cosprvsr{
+    \co@supervisortrue
+}
+
+\def\@title{}
+\def\@author{}
+\def\@AUTHOR{}
+\def\@dept{}
+\def\@prog{}
+\def\@director{}
+\def\@faculty{}
+\def\@supervisor{}
+\def\@SUPERVISOR{}
+\def\@cosupervisor{}
+\def\@COSUPERVISOR{}
+\def\@firstreader{}
+\def\@secondreader{}
+\def\@thirdreader{}
+\def\@fourthreader{}
+\def\@fifthhreader{}
+\def\@examiner{}
+\def\@submitdate{\ifcase\the\month\or
+  January\or February\or March\or April\or May\or June\or
+  July\or August\or September\or October\or November\or December\or Ocak\or \c{S}ubat\or Mart\or Nisan\or May{\i}s\or
+  Haziran\or Temmuz\or A\u{g}ustos\or Eyl\"{u}l\or Ekim\or Kas{\i}m\or Aral{\i}k\fi
+  \space \number\the\year}\def\bibname{REFERENCES}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% outer cover %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\titlep{%
+    \thispagestyle{empty}
+    \begin{center}
+        \large \textbf{UNIVERSITY OF CAMBRIDGE \\
+        \vskip1.5mm
+        \hspace{-2mm}CAVENDISH LABORATORY}  \\ \hspace{5mm}
+    \end{center}
+    \null\vskip0.4in
+    \begin{center}
+        \includegraphics [width=80mm]{Colour logo RGB_DM.jpg} % University/department logo
+    \end{center}
+    
+    \begin{center}
+        \hyphenpenalty=10000\Large\uppercase\expandafter{\textbf{\@title}}
+    \end{center}
+    %\vfill
+    \vskip1.05in
+    \begin{center}
+        \large \textbf{Part III Michaelmas report}\\ % M.Sc Thesis by
+        \large\textbf{\@author}
+    \end{center}
+    \vskip0.6in
+    \begin{center}
+        \large\textbf{\hspace{-2mm}\@dept} \\
+        \normalsize\textbf{\@submitdate} \\
+        \normalsize\textbf{CAMBRIDGE}
+    \end{center}
+    \newpage
+    }
+
+\def\signature#1#2{\parbox[b]{1in}{\smash{#1}\vskip12pt}
+\hfill \parbox[t]{3in}{\shortstack{\vrule width 3in height 0.4pt\\\small#2}}}
+
+
+%%%%%%%%%%%% PAGE, CHAPTER, THEOREM etc.... NUMBERING %%%%%%%%%%%
+\def\beforepreface{
+    \pagenumbering{roman}
+    \pagestyle{plain}
+    \titlep %line 153
+    \signaturepage %line 187
+    \permissionpage %line 216
+    }
+
+\def\nonumchapter#1{%
+    \chapter*{#1}
+    \addcontentsline{toc}{chapter}{#1}}
+
+\def\prefacesection#1{%
+    \begin{center}\bfseries\large\setstretch{1}\@title\end{center}
+    \vspace{-15mm}
+    \chapter*{\normalsize\center#1}
+    \addcontentsline{toc}{part}{#1}}
+    
+%%%%%%%%%%%%%  Acknowledgments %%%%%%%%%%%%%%%%
+\def\acknowledgements{
+    \chapter*{\center \large{ACKNOWLEDGEMENTS}}
+    \addcontentsline{toc}{part}{ACKNOWLEDGEMENTS}}
+    
+    
+%----------------------------------------------------------------------------------------
+%	DECLARATION PAGE DESIGN
+%----------------------------------------------------------------------------------------
+\def\declaration{
+    \chapter*{\center \large{DECLARATION }}
+    \addcontentsline{toc}{part}{DECLARATION}}
+
+
+%----------------------------------------------------------------------------------------
+%	DEDICATION PAGE DESIGN
+%----------------------------------------------------------------------------------------
+\newenvironment{dedication}{\newpage\begin{center}\large\em\null\vskip1in}%
+{\vfill\end{center}}
+
+%----------------------------------------------------------------------------------------
+%	NOMENCLATURE PAGE DESIGN
+%----------------------------------------------------------------------------------------
+\def\nomenclatures{
+    \chapter*{ \large{NOMENCLATURE}\vspace{-6ex}}
+   \addcontentsline{toc}{part}{NOMENCLATURE}}
+   
+
+%% This code creates the groups
+% -----------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+%	AFTER PREFACE ONE PAGE DESIGN
+%----------------------------------------------------------------------------------------
+
+\def\afterprefaceone{
+    \newpage
+	\thispagestyle{plain}
+    \tableofcontents %aybufbe.cls line 549
+    \newpage
+    }
+
+%----------------------------------------------------------------------------------------
+%	AFTER PREFACE TWO PAGE DESIGN
+%----------------------------------------------------------------------------------------
+
+    \def\afterprefacetwo{
+    %\thispagestyle{plain}
+    %\listoftables
+    
+    \makeatletter
+        %\@dottedtocline{⟨level⟩}{⟨indent⟩}{⟨numwidth⟩}{⟨title⟩}{⟨page⟩}
+        \renewcommand*\l@figure{\@dottedtocline{1}{0em}{1.5em}}
+        \renewcommand*\l@table{\@dottedtocline{1}{0em}{1.5em}}
+        %\patchcmd{\l@table}{}{}{\bfseries}{\bfseries}    % \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
+        %\patchcmd{\@dottedtocline}{\normalfont}{\bfseries}{}{}    % \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
+    \makeatother
+    
+    
+    
+    
+    {%
+        \let\oldnumberline\numberline%
+        %\renewcommand{\numberline}{\tablename~\oldnumberline}%
+        %\renewcommand{\numberline}[2]{\textbf{\tablename~\oldnumberline{##1}}~\oldnumberline{##2}}% Remove number argument
+        %\renewcommand{\numberline}{\oldnumberline}%
+        \renewcommand{\numberline}{\def\tmp{\bfseries\tablename~\oldnumberline}\zz\tmp}%
+        \def\zz##1##2{{##1{##2}}}
+        \listoftables%
+    }
+    
+
+    \addcontentsline{toc}{part}{LIST OF TABLES}
+    \newpage
+	%\thispagestyle{plain}
+    %\listoffigures
+    
+    
+    {%
+        \let\oldnumberline\numberline%
+        %\renewcommand{\numberline}{\figurename~\oldnumberline}%
+        \renewcommand{\numberline}{\def\tmp{\bfseries\figurename~\oldnumberline}\zz\tmp}%
+        \def\zz##1##2{{##1{##2}}}
+        \listoffigures%
+    }
+    \addcontentsline{toc}{part}{LIST OF FIGURES}
+    
+	
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \newpage
+    \pagenumbering{arabic}
+
+
+
+%%%%%%%%%%%%% page number position for right top %%%%%%%%%%%%%%%
+\fancypagestyle{plain}{%
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[R]{\fontsize{10}{0}\selectfont\thepage}}
+%%%%%%%%%%%%%%% page num pos ended %%%%%%%%%%%%%%%
+
+    \setcounter{page}{1}
+    \properpagestyle
+}
+
+%%% Bibliography stuff %%%%
+\let\@ldthebibliography\thebibliography
+\renewcommand{\thebibliography}[1]{%
+    \newpage
+    \addcontentsline{toc}{chapter}{REFERENCES}
+    \@ldthebibliography{#1}
+    \thispagestyle{plain}
+}
+
+\let\@ldbibliography\bibliography
+\renewcommand{\bibliography}[1]{\ifprint@bib\@ldbibliography{#1}\fi}
+%%%%%%%%%%%
+
+
+
+
+\properpagestyle
+%aet

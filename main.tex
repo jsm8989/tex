@@ -1,4 +1,77 @@
-\documentclass{article}
+% Version of the project: v2.85
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% !IMPORTANT! %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Whoever develops this document while using it, please post the final version of the document and an update list explaining what went wrong in what file/line-what page and how you changed it.
+% Mail address: eapantherea@gmail.com 
+% Please note that your help is very important and greatly appreciated
+
+
+
+\documentclass[12pt]{aybufbe}
+
+%\usepackage{fontspec}
+%\setmainfont{Times New Roman} 
+\input{packages} 
+
 \begin{document}
-  Hello World. Will this work?
+
+%\setcitestyle{square}
+
+
+
+\phd 
+%\msc 
+
+%%% Tez bilgileri %%%%%
+\submitdate{December 2021}
+\exactdate{\today}
+\title{Correcting for finite focal depth in the fluctuation spectroscopy of lipid bilayers} 
+\author{Jamie MORLEY}
+\AUTHOR{JAMIE MORLEY}  
+\prog{Part III Michaelmas report 2021}
+\dept{Cicuta Group, Biological and Soft Systems sector} 
+
+\director{Prof.Dr. Aaaa AAAA} 
+\supervisor{Prof. Dr. Bbbb BBBBB} 
+\SUPERVISOR{PROF. DR. BBBB BBBBB}
+
+%\cosupervisor{Prof. Dr. Aaaa BBBBBB} 
+%\COSUPERVISOR{PROF. DR. AAAA BBBBBB}
+%\cosprvsr 
+
+\firstreader{Prof. Dr. Cccccc CCCCC}
+\secondreader{Prof. Dr. Ddddd DDDDD }
+\thirdreader{Prof. Dr. Eeeee EEEEE }
+\fourthreader{Prof. Dr. Ffffff FFFFFF }
+
+\makeatletter
+\let\Author\@author
+\let\Submitdate\@submitdate
+\let\Exactdate\@exactdate
+\let\Dept\@dept
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\beforepreface 
+\include{Chapters/0.1_Declaration}
+%\include{Chapters/0.2_Acknowledgement}
+\include{Chapters/0.3_Abstract}
+%\include{Chapters/0.4_Zusammenfassung}
+\afterprefaceone %aybufbe.sty dosyası line 392
+\include{Chapters/0.5_Nomenclature}
+\afterprefacetwo %aybufbe.sty dosyası line 403
+
+\bookmarksetup{startatroot}
+%%% CHapters %%%
+\include{Chapters/1_introduction} 
+\include{Chapters/2_CH2}
+\include{Chapters/3_CH3}
+%\bibliographystyle{apalike_AYBU_FBE} 
+\bibliographystyle{AYBU_IEEEtran}
+\phantomsection
+\bibliography{References} 
+\include{Chapters/5_APPENDICES}
+%\include{Chapters/6_Side_of_Outer_Cover}
+
 \end{document}

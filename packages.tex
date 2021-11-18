@@ -1,0 +1,199 @@
+\usepackage{etex}
+\reserveinserts{28}
+
+\usepackage{aybufbe}
+
+\usepackage[utf8]{inputenc}
+\usepackage{dsfont}
+\usepackage{txfonts}
+\usepackage{pstricks,pst-node,pst-text,pst-3d}
+%\usepackage[round,comma]{natbib} 
+\usepackage{vmargin}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+\usepackage{float}
+\usepackage{verbatim}
+%\usepackage{caption}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{url}
+
+\usepackage{cite} 
+
+
+\usepackage{mathtools}
+
+\usepackage{longtable}
+\usepackage{nomencl}
+
+%\usepackage[unicode]{hyperref}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{rotating}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage{comment}
+\usepackage{dblfloatfix}
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{tablefootnote}
+\usepackage{booktabs}
+
+%\usepackage[%labelsep=newline,%font=bf,%labelfont =bf,%textfont = bf,justification=centering]{caption}
+\usepackage[justification=centering]{caption}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{etoolbox}
+\usepackage{tabularx}
+
+\usepackage{calc}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=false, unicode=true, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black, anchorcolor=black, hidelinks, linktoc=all}
+%\usepackage{hyperref} 
+%%%%% change the color of hyperlinks %%%%
+%\renewcommand{\chapterautorefname}{Chapter}
+
+\usepackage[nameinlink]{cleveref}
+
+
+\makeatletter
+\def\@hangfrom#1{\setbox\@tempboxa\hbox{{#1}}%
+      \hangindent 0pt%\wd\@tempboxa
+      \noindent\box\@tempboxa}
+\makeatother
+
+
+\makeatletter
+\renewcommand{\@pnumwidth}{0pt{}}% 40pt is just an example
+\makeatother
+
+%%%%%%%%%%%%%%%%%%% NOMENCLATURE %%%%%%%%%%%%%%%%%%%%
+
+\makenomenclature
+
+\renewcommand{\nomname}{}
+\renewcommand{\nompreamble}{\vspace*{-7mm}} 
+%\setlength{\nomlabelwidth}{1.5cm} 
+\setlength{\nomitemsep}{-\parsep}
+
+
+\renewcommand\nomgroup[1]{%
+  \item[\bfseries
+  \ifstrequal{#1}{D}{Acronyms}{%
+  \ifstrequal{#1}{B}{Greek Letter Symbols}{%
+  \ifstrequal{#1}{A}{Roman Letter Symbols}{
+  \ifstrequal{#1}{C}{\hspace{-1mm}Subscripts}{}}}}
+  ]}
+% -----------------------------------------
+
+%%%%%%%%%%%%%%%%%%% NOMENCLATURE DONE %%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%\usepackage[backend=biber,style=apa,babel=other,maxcitenames=6]{biblatex}
+
+%%% Colors %%%%%
+\definecolor{OvGUMEMoRIAL}{HTML}{F7DB2B}
+\definecolor{ISDUE}{HTML}{475BF9}
+\definecolor{lachinov}{HTML}{347AFD}
+\definecolor{IITKGP-KLIV}{HTML}{463DE0}
+\definecolor{MedianCHAOS1}{HTML}{2797EB}
+\definecolor{MedianCHAOS2}{HTML}{17AEDA}
+\definecolor{MedianCHAOS3}{HTML}{12BEB9}
+\definecolor{MedianCHAOS4}{HTML}{3DC990}
+\definecolor{MedianCHAOS5}{HTML}{81CC59}
+\definecolor{MedianCHAOS6}{HTML}{C8C129}
+\definecolor{PKDIA}{HTML}{F9FB15}
+\definecolor{mountain}{HTML}{FCBB3E}
+\definecolor{CIR-MPerkonigg}{HTML}{3E26A8}
+\definecolor{PKDIAv2}{HTML}{F9FB15}
+\definecolor{METU_MMLAB}{HTML}{FF0000}
+\definecolor{nnU-Net}{HTML}{F72A9B}
+\newcommand{\teamcolor}[1]{
+\begin{tikzpicture}
+\draw [fill=#1, draw=#1]circle (1.0mm);
+\end{tikzpicture}}
+\usepackage{soul}
+\newcommand{\note}[1]{\textcolor{red}{#1}}
+
+
+% Ruling
+
+\newlength\myindention
+\DeclareCaptionFormat{mytable}%
+{\hspace*{\myindention}#1#2#3}
+\setlength\myindention{-0.5cm}
+
+\theoremstyle{plain}
+%\theoremstyle{property}
+\newtheorem{property}[theorem]{Property}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Caption settings in figures and tables
+
+\makeatletter
+\patchcmd{\@caption}{\csname the#1\endcsname}{\csname fnum@#1\endcsname\hfill \ \ \ }{}{}
+%\renewcommand*\l@figure{\@dottedtocline{1}{1.5em}{4.5em}} % default for 3rd arg: 2.3em
+
+\let\l@table\l@figure % as in article.cls
+\makeatother
+\captionsetup{format=plain, font=small, labelfont=bf}
+\captionsetup[figure]{labelsep=space, singlelinecheck=true, font=footnotesize,justification=centering}
+%\captionsetup[figure]{labelsep=space, singlelinecheck=false, font=footnotesize,justification=justified}
+\captionsetup[table]{labelsep=space, singlelinecheck=false, font=footnotesize,justification=centering}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Hyphenation settings  
+\tolerance=1% 
+\emergencystretch=\maxdimen%
+\hyphenpenalty=10000%
+\hbadness=10000
+
+
+
+%\usepackage{etoolbox} 
+\makeatletter
+\newcommand\bibstyle@semicolon{\bibpunct();a,,}
+\makeatother
+
+%%%%% Section title%%%%%%
+\makeatletter
+\renewcommand*{\@seccntformat}[1]{\csname the#1\endcsname\hspace{1mm}}
+\makeatother
+
+%apa için aktif olmalı
+%\pretocmd\citep{\citestyle{semicolon}}\relax\relax
+%\pretocmd\Citep{\citestyle{semicolon}}\relax\relax
+%%%%% Çoklu kaynaklar arası noktalı virgül %%%%%%
+
+%%% Sayfa boyutları %%%%%%%
+
+\setlength{\paperheight} {297mm}
+\setlength{\paperwidth } {210mm}
+\setlength{\oddsidemargin} {0mm}
+\setlength{\evensidemargin} {0mm}
+\setlength{\marginparwidth} {0mm}
+\setlength{\marginparsep} {0mm}
+\setlength{\topmargin} {-12mm}
+\setlength{\headheight} {6.89pt} %0mm, in order to remove the warning
+\setlength{\headsep} {12mm}
+\setlength{\voffset}{0mm}
+\setlength{\hoffset}{14.75mm}
+\setlength{\textheight} {242mm} 
+\setlength{\textwidth} {145mm} 
+\setlength{\footskip}{35pt}  %%%%  page number position
+
+%\usepackage{geometry}
+ %\geometry{
+% left=40mm,
+% top=30mm,
+% }
+\renewcommand{\chapterautorefname}{Chapter}
